@@ -1,0 +1,3 @@
+[submodule "keras-yolo2"]
+	path = keras-yolo2
+	url = https://github.com/rodrigo2019/keras-yolo2.git
