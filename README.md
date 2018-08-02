@@ -16,5 +16,5 @@ In Windows:
     python -m flask run  
 
 # Testing
-Run in your browser:  s
+Run in your browser:  
     http://127.0.0.1:5000/testeok
