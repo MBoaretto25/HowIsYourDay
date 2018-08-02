@@ -12,9 +12,9 @@ In Ubuntu:
     flask run
 
 In Windows:
-    set FLASK_APP=howisyourday.py
-    python -m flask run
-    
+set FLASK_APP=howisyourday.py
+python -m flask run
+
 # Testing
 Run in your browser:
     http://127.0.0.1:5000/testeok
