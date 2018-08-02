@@ -7,13 +7,17 @@ pip install -r requirements.txt
 # Running Flask
 Open the root folder in terminal then type:
 
-In Ubuntu:  
+In Unix Bash (Linux, Mac, etc.):  
     export FLASK_APP=howisyourday.py  
     flask run  
 
-In Windows:  
+In Windows CMD:  
     set FLASK_APP=howisyourday.py  
-    python -m flask run  
+    flask run 
+
+In Windows PowerShell:
+    $env:FLASK_APP = "howinyourday.py"
+    flask run 
 
 # Testing
 Run in your browser:  
