@@ -5,7 +5,27 @@
 {% endblock %}
 
 {% block content %}
-    </header>
-    <p>Still Working On It Tho...</p>
-    <img src="static/underconstruction.jpg" alt="Under Construction" style="width:900px;height:600px;margin-left:auto;margin-right:auto;display:block;">
+
+<body>
+	<h3>hmmm, let me take a look at your expressions</h3>
+	
+	<div id="my_camera"></div>
+	
+	<!-- First, include the Webcam.js JavaScript Library -->
+	<script type="text/javascript" src="{{ url_for('static', filename='js/webcam.min.js') }}"></script>
+	
+	<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 640,
+			height: 480,
+			dest_width: 640,
+			dest_height: 480,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>	
+</body>
+</html>
 {% endblock %}
