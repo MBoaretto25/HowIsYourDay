@@ -1,31 +1,79 @@
-{% extends 'base.html' %}
-
-{% block header %}
-    <p>"A Small Deep Learning project combining Flask and Tensorflow for Mood Recognition"</p>
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block header %}
+<p>"A Small Deep Learning project combining Flask and Tensorflow for Mood Recognition"</p>
+{% endblock %} {% block content %}
+<style type="text/css">
+  form {
+    margin-top: 15px;
+  }
+  form>input {
+    margin-right: 15px;
+  }
+  .left {
+    display: inline-block;
+    float: left;
+    margin-top: 0;
+  }
+  .right {
+    display: inline-block;
+    float: right;
+    margin-top: 0;
+  }
+  .under {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 400px;
+  }
+</style>
 
 <body>
-	<h3>hmmm, let me take a look at your expressions</h3>
-	
-	<div id="my_camera"></div>
-	
-	<!-- First, include the Webcam.js JavaScript Library -->
-	<script type="text/javascript" src="{{ url_for('static', filename='js/webcam.min.js') }}"></script>
-	
-	<!-- Configure a few settings and attach camera -->
-	<script language="JavaScript">
-		Webcam.set({
-			width: 640,
-			height: 480,
-			dest_width: 640,
-			dest_height: 480,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.attach( '#my_camera' );
-	</script>	
+
+  <div class="left">
+    <h3>hmmm, let me take a look at your expressions...</h3>
+    <div id="my_camera"></div>
+  </div>
+
+  <!-- First, include the Webcam.js JavaScript Library -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/webcam.min.js') }}"></script>
+
+  <!-- Configure a few settings and attach camera -->
+  <script language="JavaScript">
+    Webcam.set({
+      width: 320,
+      height: 240,
+      dest_width: 320,
+      dest_height: 240,
+      image_format: 'jpeg',
+      jpeg_quality: 90
+    });
+    Webcam.attach('#my_camera');
+  </script>
+
+  <div class="right">
+    <div id="results"></div>
+  </div>
+
+  <!-- A button for taking snaps -->
+  <div class="under">
+    <form>
+      <input type=button value="How is your day?" onClick="take_snapshot()">
+    </form>
+  </div>
+
+  <!-- Code to handle taking the snapshot and displaying it locally -->
+  <script language="JavaScript">
+    function take_snapshot() {
+      // take snapshot and get image data
+      Webcam.snap(function(data_uri) {
+        // display results in page
+        document.getElementById('results').innerHTML =
+          '<h3>Here it is:</h3>' +
+          '<img src="' + data_uri + '"/>';
+      });
+    }
+  </script>
+
 </body>
+
 </html>
 {% endblock %}
