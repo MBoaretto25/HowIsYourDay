@@ -26,6 +26,21 @@
 		});
 		Webcam.attach( '#my_camera' );
 	</script>	
+	<form>
+		<input type=button value="Send your photo!" onClick="take_snapshot()">
+		
+	</form>
+
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// sent it to server
+				Webcam.upload(data_uri,"{{ url_for('get_user_snap') }}");
+			} );
+		}
+	</script>
+
 </body>
 </html>
 {% endblock %}
